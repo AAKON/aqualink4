@@ -1,0 +1,346 @@
+{% extends 'base.html' %}
+
+
+{% block page_content %}
+
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+
+
+          <!-- Slide 1 -->
+          {% for top in top_div %}
+          {% if forloop.counter != 1 %}
+          <div class=" carousel-item " style="background-image: url('{{ top.img_top_div.url }}');">
+          {% else %}
+          <div class="carousel-item active " style="background-image: url('{{ top.img_top_div.url }}');">
+
+          {% endif %}
+            <div class="carousel-container">
+              <div class="carousel-content container">
+
+
+                <h2 class="animate__animated animate__fadeInDown">{{ top.title }}</h2>
+                <p class="animate__animated animate__fadeInUp">{{top.descriptison}}</p>
+                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+
+
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon icofont-rounded-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon icofont-rounded-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        {% for about in about_us %}
+
+        <div class="row no-gutters">
+          <div class="col-lg-6 video-box">
+            <img src="{{ about.img_about.url }}" class="img-fluid" alt="">
+            <a href="{{ about.about_link }}" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+          </div>
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center about-content">
+
+            <div class="section-title">
+              <h2>About Us</h2>
+
+              <h5>{{ about.decription }}</h5>
+            </div>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bx bx-happy-beaming"></i></div>
+              <h4 class="title"><a href=""> WE GUARANTEE QUALITY WORK</a></h4>
+            </div>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bx bx-building-house"></i></div>
+              <h4 class="title"><a href="">RIGHT PLACE FOR GREAT SERVICE</a></h4>
+            </div>
+
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= About Lists Section ======= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Services</h2>
+        </div>
+
+        <div class="row">
+          {% for service in services_div %}
+          <div class="col-lg-6 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="{{forloop.counter}}">
+            <div class="icon"><i class="{{ service.icon }}"></i></div>
+            <h4 class="title"><a href="">{{ service.title }}</a></h4>
+            <p class="description">{{ service.description }}</p>
+          </div>
+          {% endfor %}
+
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Our Portfolio Section ======= -->
+
+
+
+
+
+
+    <section id="product" class="portfolio product section-bg">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="section-title">
+          <h2 >Our Products</h2>
+          <p>Proudly Made In Bangladesh</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              {% for product in products %}
+              <li data-filter=".{{product.pk}}">{{product.name}}</li>
+
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container">
+          {% for product in products %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{product.pk}}">
+            <div class="portfolio-wrap">
+              <img src="{{ product.img_product.url }}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>{{product.name}}</h4>
+                <p>{{product.description}}</p>
+                <div class="portfolio-links">
+                  <a href="product_details/{{product.pk}}" title="More Details"><i class="icofont-external-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+
+
+        </div>
+
+      </div>
+    </section><!-- End Our Portfolio Section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ======= Our Team Section ======= -->
+    <!-- <section class="about-lists">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Our Clients</h2>
+          <p>We work close with our clients projets to provide a unique experience</p>
+        </div>
+
+
+            <div class="row no-gutters about-lists container">
+              {% for client in clients %}
+              <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
+                <div><img src="{{ client.img_clients.url }}" class="img-fluid" alt=""></div>
+              </div>
+                {% endfor %}
+                {% for client in clients %}
+                <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
+                  <div><img src="{{ client.img_clients.url }}" class="img-fluid" alt=""></div>
+                </div>
+                  {% endfor %}
+            </div>
+
+      </div>
+    </section><!-- End Our Team Section --> -->
+
+    <section class="about-lists">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Clients</h2>
+          <p>We work close with our clients projets to provide a unique experience</p>
+        </div>
+
+        <div class="row no-gutters">
+
+
+          {% for client in clients %}
+          <div  title="{{client.name}}" class="col-lg-2 col-md-6 content-item" data-aos="fade-up">
+            <div><img src="{{ client.img_clients.url }}" class="img-fluid" alt=""></div>
+          </div>
+            {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End About Lists Section -->
+
+
+
+
+
+
+
+
+
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Contact Us</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
+            <div  class="info-box">
+              <iframe style="width:100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d456.3320590717364!2d90.40856236184491!3d23.795244308806204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7059a7e45c5%3A0xb8d24bfea1a930!2sAqualink%20Bangladesh%20LTD!5e0!3m2!1sen!2sbd!4v1575634426386!5m2!1sen!2sbd" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+            </div>
+          </div>
+
+          <div class="col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="info-box">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p>office@aqualinkbd.net</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="info-box ">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+880 1675932265</p>
+            </div>
+          </div>
+
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
+            <form action="{% url 'email' %}" method="POST">
+              {% csrf_token %}
+              <div class="form-row">
+                <div class="col-lg-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <input type="email" class="form-control" required name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <div class="validate"></div>
+              </div>
+              {% if success %}
+              <div class="warning">
+              <!-- <div class="mb-3"> -->
+                <!-- <div class="loading">Loading</div>
+                <div class="error-message"></div> -->
+                <div class="sent-message">{{success}}</div>
+              </div>
+              {% endif %}
+              <div class="text-center"><button class="btn btn-info" type="submit">Send Message</button></div>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Us Section -->
+
+  </main><!-- End #main -->
+
+  <script>
+  // Initialize and add the map
+  function initMap() {
+    // The location of Uluru
+    var uluru = {lat: -25.344, lng: 131.036};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 4, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+  }
+      </script>
+
+      <script src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d456.3320590717364!2d90.40856236184491!3d23.795244308806204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7059a7e45c5%3A0xb8d24bfea1a930!2sAqualink%20Bangladesh%20LTD!5e0!3m2!1sen!2sbd!4v1575634426386!5m2!1sen!2sbd" async defer></script>
+
+{% endblock page_content %}

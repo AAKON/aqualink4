@@ -1,0 +1,273 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Aqualink</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'static/assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/icofont/icofont.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/venobox/venobox.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+
+
+  <!-- =======================================================
+  * Template Name: Mamba - v2.3.0
+  * Template URL: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <section style="background-color:#5C768D" id="topbar" class="d-none d-lg-block">
+    <div class="container clearfix" >
+      <div style="color:#fff" class="contact-info float-left" >
+        <i style="color:#fff; !important" class="icofont-envelope"></i><a style="color:#fff; !important" href="mailto:office@aqualinkbd.net">office@aqualinkbd.net</a>
+        <i style="color:#fff; !important" class="icofont-phone"></i> +880 1675932265
+      </div>
+      <div  class="social-links float-right">
+        <a style="color:#fff; !important" href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a style="color:#fff; !important" href="#" class="facebook"><i class="icofont-facebook"></i></a>
+        <a style="color:#fff; !important" href="#" class="instagram"><i class="icofont-instagram"></i></a>
+        <a style="color:#fff; !important" href="#" class="skype"><i class="icofont-skype"></i></a>
+        <a style="color:#fff; !important" href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div class="logo float-left">
+        <a href="/"><img style="height:35px; width:179px" src="{% static 'assets/img/aqualink.png' %}" alt=""></a>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/#about">About Us</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li class="drop-down"><a href="/#product">Products</a>
+            <ul>
+              {% for product in products %}
+              {% ifnotequal request.get_full_path '/' %}
+              <li><a href="{{product.pk}}">{{product.name}}</a></li>
+              {% else %}
+              <li><a href="product_details/{{product.pk}}">{{product.name}}</a></li>
+              {% endifnotequal %}
+
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a href="/#about-lists">Clients</a></li>
+          <li><a href="/#contact">Contact Us</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+
+
+
+
+
+
+  {% block page_content %}
+  {% endblock page_content%}
+
+
+
+
+
+
+
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+
+            <div style="align: left;justify:center" class="col-lg-4 col-md-6 footer-newsletter">
+              <div style="width:50%; margin-top:auto; margin-bottom:auto;">
+                <img style="height:35px; width:179px" src="{% static 'assets/img/aqualink.png' %}" alt="">
+              </div>
+
+            </div>
+
+
+            <div style="text-align:right" class="col-lg-3 col-md-6 footer-info">
+              <h3>Aqualink</h3>
+            <strong>Corresponding Office:</strong>
+              <p>+880 1675932265
+                <br>
+                office@aqualinkbd.net
+                <br>
+                House-26, Road-28, Block-K, Banani, Dhaka</p>
+
+
+              <strong>Head Office:</strong>
+              <p>02 8834577
+                <br>
+              212, Tejgaon Industrial Area, Dhaka-1208.</p>
+
+
+
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Services</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">IOT & EMBEDDED SYSTEMS</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">AI & MACHINE LEARNING</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">WEB & APP DEVELOPMENT</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">ROBOTICS & INDUSTRIAL AUTOMATION</a></li>
+
+              </ul>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Mamba</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+
+    </footer><!-- End Footer -->
+
+
+
+
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
+    <script src="{% static 'assets/vendor/jquery-sticky/jquery.sticky.js'%}"></script>
+    <script src="{% static 'assets/vendor/venobox/venobox.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/counterup/counterup.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js'%}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js'%}"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+  $('.yourclass').slick({
+  dots: false,
+  centerMode: true,
+  centerPadding: '105px',
+  infinite: true,
+  speed: 300,
+  slidesToShow: 3,
+  slidesToScroll: 2,
+  autoplay:true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+  });
+  </script>
+  </body>
+
+  </html>
