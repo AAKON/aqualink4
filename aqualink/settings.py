@@ -105,8 +105,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'aqualink',
-        'USER': 'aqualink_dbadmin',
-        'PASSWORD': 'aqualink@321',
+        'USER': 'aqualink',
+        'PASSWORD': '4QU41!nk',
         'HOST': 'localhost',
         'PORT': '',
     }
