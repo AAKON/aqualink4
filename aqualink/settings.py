@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['aqualinkbangladesh.com']
 
-
 #email settings
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
