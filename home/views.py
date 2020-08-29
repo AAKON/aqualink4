@@ -72,6 +72,7 @@ def email(request):
     send_mail(
     subject,
     message,
+    
     'website@aqualinkbd.xyz',
     ['website@aqualinkbd.xyz'],
     fail_silently=False,
