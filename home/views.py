@@ -72,8 +72,8 @@ def email(request):
     send_mail(
     subject,
     message,
-    'faisalakon444@gmail.com',
-    ['faisalakon444@gmail.com'],
+    'website@aqualinkbd.xyz',
+    ['website@aqualinkbd.xyz'],
     fail_silently=False,
 )
     return HttpResponseRedirect("/")

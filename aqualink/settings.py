@@ -23,19 +23,18 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = '#j5sbb*88t_(5%@nl2t8$g+!q#f7ihg)*-_78!6vdudf2)u2&_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
 #email settings
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'aqualinkbd.xyz'
 EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'faisalakon444@gmail.com'
-EMAIL_HOST_PASSWORD = ""
-# EMAIL_HOST_PASSWORD = 'umlesfbqocavswqd'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'website@aqualinkbd.xyz'
+EMAIL_HOST_PASSWORD = 'nSUbbsVsNm'
 
 
 
