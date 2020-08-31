@@ -5,7 +5,7 @@
 {% block page_content %}
  <!-- background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%; -->
   <!-- data-0-top-bottom="background-position: 50% 50px" data-start="background-position: 50% -31px" -->
-<section class="section text-center" style="align:center">
+<section class="section text-center" style="align-content:center">
 {% for product in product_details %}
 <div class="" style="background-image:url('{{ product.img_cover.url }}'); background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%;">
 <div class="background-overlay" style="background-color: rgba(92,118,141,0.8); ">
@@ -28,9 +28,11 @@
     <li style="padding:10px" class="nav-item">
         <a class="btn btn-info" href="#Overview" class="nav-link active" data-toggle="tab">Overview</a>
     </li>
+    {% if how_works %}
     <li style="padding:10px" class="nav-item">
         <a class="btn btn-info" href="#How_It_Works" class="nav-link" data-toggle="tab">How It Works</a>
     </li>
+    {% endif %}
     <li style="padding:10px" class="nav-item">
         <a class="btn btn-info" href="#Pricing_Details" class="nav-link" data-toggle="tab">Pricing Details</a>
     </li>
@@ -53,14 +55,14 @@
             {% for over in overview %}
 
             {% if over.left_div_270_552 %}
-            <div style="text-align:center" class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
+            <div style="text-align:center" class="col-lg-6 col-md-6 content-item" data-aos="fade-up">
               <h2>Sensores</h2>
               <br>
               <img style="width:100%" src="{{over.left_div_270_552.url}}" alt="">
             </div>
             {% endif %}
             {% if over.right_div_600_500 %}
-            <div style="text-align:center" class="col-lg-8 col-md-6 content-item" data-aos="fade-up" data-aos-delay="100">
+            <div style="text-align:center" class="col-lg-6 col-md-6 content-item" data-aos="fade-up" data-aos-delay="100">
               <h2>Software</h2>
               <br>
               <img style="width:100%" src="{{over.right_div_600_500.url}}" alt="">
