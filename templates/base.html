@@ -36,7 +36,9 @@
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
 
-
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
 
@@ -47,9 +49,20 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <script type="text/javascript">
+  $(window).load(function() {
+  // Animate loader off screen
+  $(".se-pre-con").fadeOut("slow");
+});
+  </script>
+
+
 </head>
 
 <body>
+  <div class="se-pre-con">
+
+  </div>
 
   <!-- ======= Top Bar ======= -->
   <section style="background-color:#5C768D" id="topbar" class="d-none d-lg-block">
@@ -59,11 +72,12 @@
         <i style="color:#fff; !important" class="icofont-phone"></i> +880 1675932265
       </div>
       <div  class="social-links float-right">
-        <a style="color:#fff; !important" href="#" class="twitter"><i class="icofont-twitter"></i></a>
-        <a style="color:#fff; !important" href="#" class="facebook"><i class="icofont-facebook"></i></a>
-        <a style="color:#fff; !important" href="#" class="instagram"><i class="icofont-instagram"></i></a>
-        <a style="color:#fff; !important" href="#" class="skype"><i class="icofont-skype"></i></a>
-        <a style="color:#fff; !important" href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+        <a style="color:#fff" href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a style="color:#fff" href="https://www.facebook.com/aqualink.bd/" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a style="color:#fff" href="https://www.instagram.com/aqualink_bangladesh_ltd" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a style="color:#fff" href="https://www.youtube.com/channel/UC5ZssBvRC58VxxRY48NELxA" class="google-plus"><i class="bx bxl-youtube"></i></a>
+        <a style="color:#fff" href="https://www.linkedin.com/company/aqualinkbd" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+
       </div>
     </div>
   </section>
@@ -87,7 +101,7 @@
             <ul>
               {% for product in products %}
               {% ifnotequal request.get_full_path '/' %}
-              <li><a href="{{product.pk}}">{{product.name}}</a></li>
+              <li><a href="{% url 'product' product_id=product.pk %}">{{product.name}}</a></li>
               {% else %}
               <li><a href="product_details/{{product.pk}}">{{product.name}}</a></li>
               {% endifnotequal %}
@@ -96,14 +110,42 @@
             </ul>
           </li>
           <li><a href="/#clint">Clients</a></li>
+          <li><a href="/shop">Shop</a></li>
           <li><a href="/#contact">Contact Us</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
+
     </div>
+
   </header><!-- End Header -->
 
+  <div class="container">
+    {% if alert_color %}
+  <div class="messages">
+  {% if messages %}
+    {% for message in messages %}
+      <div style="{{ alert_color }}"  {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %} role="alert">
+        {{message}}
+        <button style="color:white" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+  {% else %}
+  <div class="messages">
+  {% if messages %}
+    {% for message in messages %}
+      <div style="font-weight:bold;background-color:green; opacity:.5;color:white;" {% if message.tags %} class="alert alert-{{message.tags}}{% endif %}" role="alert">
+        {{message}}
+        <button style="color:white" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+  {% endif %}
 
+  </div>
 
 
 
@@ -153,10 +195,10 @@
 
               <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://www.facebook.com/aqualink.bd/" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instagram.com/aqualink_bangladesh_ltd" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UC5ZssBvRC58VxxRY48NELxA" class="google-plus"><i class="bx bxl-youtube"></i></a>
+                <a href="https://www.linkedin.com/company/aqualinkbd" class="linkedin"><i class="bx bxl-linkedin"></i></a>
               </div>
             </div>
 
@@ -191,7 +233,7 @@
         <div class="copyright">
           &copy; Copyright <strong><span style="color:#28B1DA;">Aqualink</span></strong>. All Rights Reserved
         </div>
-        
+
       </div>
 
     </footer><!-- End Footer -->

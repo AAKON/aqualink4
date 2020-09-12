@@ -19,13 +19,16 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from home import views
+from shop import urls
 urlpatterns = [
     path('admin/', admin.site.urls,name='admin'),
 
     path('',views.home,name='home'),
     path('product_details/<int:product_id>',views.product,name='product'),
     path('email',views.email,name='email'),
+    path('shop/', include('shop.urls')),
 
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

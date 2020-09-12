@@ -14,6 +14,7 @@ from .models import Video_product
 from .models import Specification
 from django.shortcuts import redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 
 def home(request):
 
@@ -68,15 +69,16 @@ def email(request):
 
     data = request.POST.copy()
     subject = data.get('subject')
-    message = data.get('message')+'<br>'+data.get('name')+'<br>'+data.get('email')
+    message = data.get('message')+'%0A'+data.get('name')+'%0A'+data.get('email')
     send_mail(
     subject,
     message,
-    
+
     'website@aqualinkbd.xyz',
     ['website@aqualinkbd.xyz'],
     fail_silently=False,
-)
+                )
+    messages.info(request, "Thank you, we will contact with you.")
     return HttpResponseRedirect("/")
 
 # Create your views here.

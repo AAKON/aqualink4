@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<div class="container my-5">
+  <div class="my-5">
+    <h2>Your Cart</h2>
+  </div>
+  <table  id="main_cart" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col" width="1%"></th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scop="col">Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in cart_products %}
+      {% for price in prices %}
+
+          {% if price.product_id == product.pk %}
+
+      <tr>
+        <th scope="row"></th>
+        <td class="product_name">{{product.name}}</td>
+        <td>
+        <input class="quantity" onchange="val('{{price.price}}','content{{product.pk|safe}}',value)" id="{{product.pk|safe}}"
+         type="number" min="1" max="100" value="1" id="points" name="points">
+        </td>
+        <td><span class="totalprice" id="content{{product.pk|safe}}">{{price.price}}</span></td>
+        <td><a href="{% url 'shop:remove_from_cart' pk=product.pk %}" class="btn btn-danger btn-sm">Remove</a></td>
+      </tr>
+
+         {%endif%}
+
+      {% endfor %}
+      {% endfor %}
+
+      <tr>
+        <th scope="row"></th>
+        <td colspan="2">Total</td>
+        <td onload="totalprice" colspan="2" id="totalpriceall">&#2547; 00</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="">
+  <a href="{% url 'shop:shop'%}" class="btn btn-success mr-4">Continue Shopping</a>
+  <!-- <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Checkout
+  </button> -->
+  <a class="btn btn-info mr-4" data-toggle="modal" data-target="#onlinePayment" href="#">Checkout</a>
+
+  <!-- <li style="align:center" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <ul><a class="btn btn-info mr-4" data-toggle="modal" data-target="#onlinePayment" href="#">Online Payment</a></ul>
+    <ul><a onclick="frm()" href="" class="btn btn-info mr-4" data-toggle="modal" data-target="#modalLoginForm">Cash On Delivery</a><ul>
+  </li> -->
+</div>
+</div>
+
+<div style="align:center" centered id="onlinePayment" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+  <div  class="modal-content ">
+    <div class="modal-header">
+
+          <a onclick="frm()" href="" class="btn btn-info" data-toggle="modal" data-target="#modalLoginForm">Cash On Delivery</a>
+
+          <a class="btn btn-info" disabled >Online Payment</a>
+
+
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">We Will Contact With You, Please Fill This Form</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="/shop/order/" class="user_form">
+        {% csrf_token %}
+      <div class="modal-body mx-3">
+
+        <div class="md-form mb-5">
+          <input name="name" required type="text" class="form-control validate user_info">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <input name="address" required type="text" class="form-control validate user_info">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your Address</label>
+        </div>
+        <div class="md-form mb-5">
+          <input name="phone" required type="number" class="form-control validate user_info">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your Phone Number</label>
+        </div>
+        <div class="md-form mb-5">
+          <input name="email" required type="email" class="form-control validate user_info">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your Email</label>
+        </div>
+        <div hidden class="md-form mb-5">
+          <input name="quantity" id="fgh" required >
+
+        </div>
+        <div hidden class="md-form mb-5">
+          <input name="total_price" id="total_p" required >
+
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-success">Confirme</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+
+var sum = 0;
+$('.totalprice').each(function(){
+sum += parseFloat(this.innerText);
+                                });
+console.log(sum);
+// console.log(sessionStorage);
+var userName = "Shekhar Shete";
+'<%Session["UserName"] = "' + userName + '"; %>';
+document.getElementById('totalpriceall').innerHTML = sum;
+
+function val(price,product,quantity) {
+    // let com = document.getElementById(product).value;
+    document.getElementById(product).innerHTML = price*quantity;
+  var sum = 0;
+  $('.totalprice').each(function(){
+  sum += parseFloat(this.innerText);
+                                  });
+  console.log(sum)
+
+  document.getElementById('totalpriceall').innerHTML = sum;
+}
+function frm(){
+  var quantity = []
+  $('.quantity').each(function(){
+     quantity.push(parseInt(this.value));
+                                       });
+    document.getElementById('fgh').value= quantity;
+    // var sum = 0;
+    // $('.totalprice').each(function(){
+    // sum += parseFloat(this.innerText);
+    //                                 });
+    var venugopal =document.getElementById('totalpriceall').innerHTML;
+
+
+    document.getElementById('total_p').value = venugopal;
+}
+
+
+$('.user_form' ).submit(function(){
+  $(".se-pre-con").fadeIn();
+});
+//   var prices = []
+//   var quantity = []
+//   var product_name = []
+//   var user_info = []
+//
+//   $('.totalprice').each(function(){
+//   prices.push(parseFloat(this.innerText));
+//                                     });
+//   $('.quantity').each(function(){
+//   quantity.push(parseInt(this.value));
+//                                     });
+//   $('.product_name').each(function(){
+//   product_name.push(this.innerText);
+//                                     });
+//   $('.user_info').each(function(){
+//   user_info.push(this.value);
+//                                     });
+//
+// var cart_all = {prices,quantity,product_name}
+//
+//   $.post( "/shop/order/", {csrfmiddlewaretoken: '{{ csrf_token }}', 'cart_all':JSON.stringify(cart_all),
+//   'user_info':JSON.stringify(user_info) });
+//
+//   console.log(prices)
+//   console.log(quantity)
+//   console.log(product_name)
+//   console.log(user_info)
+// });
+
+
+</script>
+
+
+{% endblock %}
