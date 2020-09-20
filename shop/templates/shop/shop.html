@@ -63,7 +63,7 @@
             <tr>
               <th scope="col" width="1%"></th>
               <th scope="col">Product Name</th>
-              <!-- <th scope="col">Quantity</th> -->
+              <th scope="col">Quantity</th>
               <th scope="col">Price</th>
               <th scop="col">Remove</th>
             </tr>
@@ -79,6 +79,7 @@
               <input onchange="val('{{price.price}}','content{{product.pk|safe}}',value)" id="{{product.pk|safe}}"
                type="number" min="1" max="100" value="1" id="points" name="points">
               </td> -->
+              <td><span style="margin-left: 30px;" class="quantity">1</span></td>
               <td><span class="totalprice" id="content{{product.pk|safe}}">{{price.price}}</span></td>
               <td><a href="{% url 'shop:remove_from_cart' pk=product.pk %}" class="btn btn-danger btn-sm">Remove</a></td>
             </tr>
