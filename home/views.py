@@ -26,7 +26,8 @@ def home(request):
     services_div = Services_div.objects.all()
     products = Product.objects.all()
 
-    
+    if 'product' not in request.session:
+        request.session['product'] = []
     request.session['product_order'] = len(request.session['product'])
 
 #this get request is for general purpose 
@@ -68,6 +69,8 @@ def product(request,product_id):
     products = Product.objects.all()
 
 
+    if 'product' not in request.session:
+        request.session['product'] = []
     request.session['product_order'] = len(request.session['product'])
 
     return render(request,'product/product_details.html', {'product_details':product_details,
