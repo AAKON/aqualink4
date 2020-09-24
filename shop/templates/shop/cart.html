@@ -42,6 +42,18 @@
         <td onload="totalprice" colspan="2" id="totalpriceall">&#2547; 00</td>
         <td></td>
       </tr>
+      <tr>
+        <th scope="row"></th>
+        <td colspan="2">Vat</td>
+        <td onload="totalprice" colspan="2" id="vatall">&#2547; 00</td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td colspan="2">Total + Vat</td>
+        <td onload="totalprice" colspan="2" id="vatntotalall">&#2547; 00</td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
 
@@ -112,6 +124,14 @@
           <input name="total_price" id="total_p" required >
 
         </div>
+        <div hidden class="md-form mb-5">
+          <input name="vat" id="vat" required >
+
+        </div>
+        <div hidden class="md-form mb-5">
+          <input name="vat_total" id="vat_total" required >
+
+        </div>
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
@@ -137,7 +157,11 @@ console.log(sum);
 // console.log(sessionStorage);
 var userName = "Shekhar Shete";
 '<%Session["UserName"] = "' + userName + '"; %>';
-document.getElementById('totalpriceall').innerHTML = sum;
+document.getElementById('totalpriceall').innerHTML = '&#2547; '+sum;
+var vat = Math.round(sum*.15)
+document.getElementById('vatall').innerHTML = '&#2547; '+ vat;
+var total_vat = Math.round(sum*.15)+sum;
+document.getElementById('vatntotalall').innerHTML = '&#2547; '+ total_vat;
 
 function val(price,product,quantity) {
     // let com = document.getElementById(product).value;
@@ -146,12 +170,15 @@ function val(price,product,quantity) {
   $('.totalprice').each(function(){
   sum += parseFloat(this.innerText);
                                   });
-  console.log(sum)
+  console.log(sum);
 
-  document.getElementById('totalpriceall').innerHTML = sum;
+  document.getElementById('totalpriceall').innerHTML = '&#2547; '+sum ;
+  document.getElementById('vatall').innerHTML = '&#2547; '+ Math.round(sum*.15);
+  var total_vat = Math.round(sum*.15)+sum;
+  document.getElementById('vatntotalall').innerHTML = '&#2547; '+ total_vat;
 }
 function frm(){
-  var quantity = []
+  var quantity = [];
   $('.quantity').each(function(){
      quantity.push(parseInt(this.value));
                                        });
@@ -160,10 +187,13 @@ function frm(){
     // $('.totalprice').each(function(){
     // sum += parseFloat(this.innerText);
     //                                 });
-    var venugopal =document.getElementById('totalpriceall').innerHTML;
+    var totalpriceall =document.getElementById('totalpriceall').innerHTML;
+    var vatall =document.getElementById('vatall').innerHTML;
+    var vatntotalall =document.getElementById('vatntotalall').innerHTML;
 
-
-    document.getElementById('total_p').value = venugopal;
+    document.getElementById('total_p').value = totalpriceall.replace(/\D/g, "");
+    document.getElementById('vat').value = vatall.replace(/\D/g, "");
+    document.getElementById('vat_total').value = vatntotalall.replace(/\D/g, "");
 }
 
 
