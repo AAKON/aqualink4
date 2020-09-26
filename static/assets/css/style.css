@@ -1482,12 +1482,7 @@ section {
   color: #9eccf4;
 }
 
-@media (max-width: 738px) {
-  .quotation_btn {
-    margin-top: 10px;
-    
-  }
-}
+
 
 /* Paste this css to your style sheet file or under head tag */
 /* This only works with JavaScript,
