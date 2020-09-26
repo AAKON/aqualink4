@@ -151,6 +151,7 @@ def order(request):
             'customer_email' : request.POST['email'],
         }
 #this one using shop/utils.py file to genarate pdf
+    
     pdf = render_to_pdf('pdf/invoice.html', data)
 
 #for sending email to customer
@@ -174,3 +175,54 @@ def order(request):
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     # return HttpResponse(pdf.getvalue(), content_type='application/pdf')
+
+def quotation(request):
+    quantity = request.POST['quantity'].split(',')
+    pro = request.session['product']
+    total_price = request.POST['total_price']
+    vat = request.POST['vat']
+    vat_total = request.POST['vat_total']
+    products =Product.objects.filter(pk__in=pro)
+    price = Shop.objects.all()
+    em = request.POST['email']
+
+
+    data = {
+            'time': datetime.datetime.now(),
+            'products_cart': products,
+            'product_quantity': quantity,
+            'product_price': price,
+            'total_price' : total_price,
+            'vat' : vat,
+            'vat_total' : vat_total,
+            'customer_name'  :  request.POST['name'],
+            'customer_address' : request.POST['address'],
+            'customer_phone' : request.POST['phone'],
+            'customer_email' : request.POST['email'],
+        }
+#this one using shop/utils.py file to genarate pdf
+   
+    pdf = render_to_pdf('pdf/quotation.html', data)
+
+#for sending email to customer
+    subject, from_email, to = 'Your order from Aqualink shop', 'website@aqualinkbd.xyz', em
+    text_content = 'Please check the attached file.'
+    # html_content = '<p>This is an <strong>important</strong> message.</p>'
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_alternative(pdf.getvalue(),'application/pdf')
+    msg.send()
+
+#for sending email to our end
+    subject, from_email, to = 'New cutomer order', 'website@aqualinkbd.xyz', 'website@aqualinkbd.xyz'
+    text_content = 'Please check the attached file.'
+    # html_content = '<p>This is an <strong>important</strong> message.</p>'
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_alternative(pdf.getvalue(),'application/pdf')
+    msg.send()
+
+#this one for message feedback
+    messages.info(request, "Please check your email for quotation,which you just submitted. Thank you !")
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    # return HttpResponse(pdf.getvalue(), content_type='application/pdf')
+
