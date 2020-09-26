@@ -205,7 +205,7 @@ def quotation(request):
     pdf = render_to_pdf('pdf/quotation.html', data)
 
 #for sending email to customer
-    subject, from_email, to = 'Your order from Aqualink shop', 'website@aqualinkbd.xyz', em
+    subject, from_email, to = 'Your quotation from Aqualink shop', 'website@aqualinkbd.xyz', em
     text_content = 'Please check the attached file.'
     # html_content = '<p>This is an <strong>important</strong> message.</p>'
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
@@ -213,7 +213,7 @@ def quotation(request):
     msg.send()
 
 #for sending email to our end
-    subject, from_email, to = 'New cutomer order', 'website@aqualinkbd.xyz', 'website@aqualinkbd.xyz'
+    subject, from_email, to = 'New cutomer quotation', 'website@aqualinkbd.xyz', 'website@aqualinkbd.xyz'
     text_content = 'Please check the attached file.'
     # html_content = '<p>This is an <strong>important</strong> message.</p>'
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
