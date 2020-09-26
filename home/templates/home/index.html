@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
-
+{% load static %}
 {% block page_content %}
 
 
 
   <!-- ======= Hero Section ======= -->
   <section id="hero">
+    <div id="home"></div>
     <div class="hero-container">
       <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 
@@ -30,7 +31,7 @@
 
                 <h2 class="animate__animated animate__fadeInDown">{{ top.title }}</h2>
                 <p class="animate__animated animate__fadeInUp">{{top.descriptison}}</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                <a href="https://www.thedailystar.net/star-youth/news/affordable-solution-combat-covid-19-1945869" target="_blank" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
               </div>
             </div>
           </div>
@@ -76,13 +77,10 @@
             </div>
 
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><i class="bx bx-happy-beaming"></i></div>
-              <h4 class="title"><a href=""> WE GUARANTEE QUALITY WORK</a></h4>
-            </div>
-
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><i class="bx bx-building-house"></i></div>
-              <h4 class="title"><a href="">RIGHT PLACE FOR GREAT SERVICE</a></h4>
+              <p style="font-weight:bold;text-align:justify">Aqualink Bangladesh Ltd. works with clients to
+                design and develop all sort of hardware and
+                software solution. Our solutions are fully focused
+                on our user that emphases on client first.</p>
             </div>
 
           </div>
@@ -92,22 +90,7 @@
       </div>
     </section><!-- End About Us Section -->
 
-    <!-- ======= About Lists Section ======= -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
     <!-- ======= Services Section ======= -->
@@ -224,7 +207,7 @@
       </div>
     </section> End Our Team Section -->
 
-    <section class="about-lists">
+    <section id="clint" class="clint">
       <div class="container">
         <div class="section-title">
           <h2>Our Clients</h2>
@@ -235,8 +218,8 @@
 
 
           {% for client in clients %}
-          <div  title="{{client.name}}" class="col-lg-2 col-md-6 content-item" data-aos="fade-up">
-            <div><img src="{{ client.img_clients.url }}" class="img-fluid" alt=""></div>
+          <div  title="{{client.name}}" class="col-lg-2 col-md-2 col-sm-6 content-item " data-aos="fade-up">
+            <div style="width:80% !important; height:80% !important"><img style="border:none;" src="{{ client.img_clients.url }}" class="img-fluid card" alt=""></div>
           </div>
             {% endfor %}
 

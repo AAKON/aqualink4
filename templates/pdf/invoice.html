@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="phototime is a photo related website and anyone can download photos from here">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Invoice</title>
+
+</head>
+<body>
+	<div class="logo-area col-1-3">
+		<img width="100px" src="https://aqualinkbangladesh.com/static/assets/img/aqualink.png" alt="logo" />
+	</div>
+	<div class="">
+		<h1 style="font-size:7;color:#186077">INVOICE</h1>
+	</div>
+	<hr>
+	<div class="">
+	<h1 style="color:#186077">Bill To :</h1>
+	<b>{{customer_name}}</b> </br> {{customer_address}} </br> {{customer_phone}} </br> {{customer_email}}
+	<p> <b>Time</b>: {{time}}</p>
+	</div>
+<hr>
+	<div class="">
+		<h3 style="color:#186077">Amount due (BDT)</h3>
+		<h3>Tk {{vat_total}}</h3>
+	</div>
+	<hr>
+
+	<div class="table-area">
+		<table style="text-align:center">
+			<tr>
+				<th>ITEMS</th>
+				<th>QUANTITY</th>
+
+				<th>PRICE</th>
+				<th>AMOUNT</th>
+			</tr>
+			{% for product in products_cart %}
+			{% for price in product_price %}
+				{% if price.product_id == product.pk %}
+			<tr>
+				<td><b>{{product.name}}</b></td>
+				{% for quantity in product_quantity %}
+				{% if forloop.counter == forloop.parentloop.counter %}
+				<td>{{quantity}}</td>
+				<td>{{price.price}}</td>
+				<td>{% widthratio quantity 1 price.price %}</td>
+				{% endif %}
+				{% endfor %}
+			</tr>
+				{%endif%}
+			{% endfor %}
+			{% endfor %}
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td><b>Total:</b></td>
+				<td>tk {{total_price}}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><b>Total:</b></td>
+				<td>tk {{vat}}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><b>Amount Due(BDT):</b></td>
+				<td>tk {{vat_total}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="hr-area">
+		<hr />
+	</div>
+	<div class="contact-area">
+
+		<div class="aqua-add col-1-3">
+			<b style="color:#186077">Aqualink Bangladesh</b> </br> House 26, Road 28, Block K </br> Banani </br> Dhaka, Dhaka 1213 </br> Bangladesh
+		</div>
+		<div class="info-area col-1-3">
+			<p><b>Contact Information</b> </br> Mobile: +8801675932265 </br> www.aqualinkbangladesh.com</p>
+		</div>
+		<div class="logo-area col-1-3">
+			<img width="100px" src="https://aqualinkbangladesh.com/static/assets/img/aqualink.png" alt="logo" />
+		</div>
+	</div>
+	<br>
+	<div class="note-area">
+		<h3 style="color:#410F08">Soon we will contact with you. If you need to contact with us, the contact is given above.</h3>
+	</div>
+</body>
+</html>
