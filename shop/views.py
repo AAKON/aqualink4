@@ -109,12 +109,9 @@ def order(request):
     quantity = request.POST['quantity'].split(',')
     pro = request.session['product']
     total_price = request.POST['total_price']
-    vat = request.POST['vat']
-    vat_total = request.POST['vat_total']
     products =Product.objects.filter(pk__in=pro)
     price = Shop.objects.all()
     em = request.POST['email']
-    # print(vat)
 
 
     cutomer = oder_tb(
@@ -143,8 +140,6 @@ def order(request):
             'product_quantity': quantity,
             'product_price': price,
             'total_price' : total_price,
-            'vat' : vat,
-            'vat_total' : vat_total,
             'customer_name'  :  request.POST['name'],
             'customer_address' : request.POST['address'],
             'customer_phone' : request.POST['phone'],
@@ -173,4 +168,3 @@ def order(request):
     messages.info(request, "Successfully placed your order, soon we will contact with you. Check your email,which you just submitted. Thank you !")
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    # return HttpResponse(pdf.getvalue(), content_type='application/pdf')
