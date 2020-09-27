@@ -42,6 +42,18 @@
         <td onload="totalprice" colspan="2" id="totalpriceall">&#2547; 00</td>
         <td></td>
       </tr>
+      <tr>
+        <th scope="row"></th>
+        <td colspan="2">Vat</td>
+        <td onload="totalprice" colspan="2" id="vatall">&#2547; 00</td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td colspan="2">Total + Vat</td>
+        <td onload="totalprice" colspan="2" id="vatntotalall">&#2547; 00</td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
 
@@ -52,6 +64,7 @@
     Checkout
   </button> -->
   <a class="btn btn-info mr-4" data-toggle="modal" data-target="#onlinePayment" href="#">Checkout</a>
+  <a  onclick="frm('/shop/quotation/')" class="btn btn-warning mr-4 quotation_btn" data-toggle="modal" data-target="#modalLoginForm" href="#">Send me Quotation</a>
 
   <!-- <li style="align:center" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <ul><a class="btn btn-info mr-4" data-toggle="modal" data-target="#onlinePayment" href="#">Online Payment</a></ul>
@@ -65,7 +78,7 @@
   <div  class="modal-content ">
     <div class="modal-header">
 
-          <a onclick="frm()" href="" class="btn btn-info" data-toggle="modal" data-target="#modalLoginForm">Cash On Delivery</a>
+          <a onclick="frm('/shop/order/')" href="" class="btn btn-info" data-toggle="modal" data-target="#modalLoginForm">Cash On Delivery</a>
 
           <a class="btn btn-info" disabled >Online Payment</a>
 
@@ -74,6 +87,13 @@
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
 <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -84,7 +104,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="/shop/order/" class="user_form">
+      <form method="post" action="/shop/order/" id="user_form" class="user_form">
         {% csrf_token %}
       <div class="modal-body mx-3">
 
@@ -112,6 +132,14 @@
           <input name="total_price" id="total_p" required >
 
         </div>
+        <div hidden class="md-form mb-5">
+          <input name="vat" id="vat" required >
+
+        </div>
+        <div hidden class="md-form mb-5">
+          <input name="vat_total" id="vat_total" required >
+
+        </div>
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
@@ -121,6 +149,7 @@
     </div>
   </div>
 </div>
+
 
 
 
@@ -137,7 +166,11 @@ console.log(sum);
 // console.log(sessionStorage);
 var userName = "Shekhar Shete";
 '<%Session["UserName"] = "' + userName + '"; %>';
-document.getElementById('totalpriceall').innerHTML = sum;
+document.getElementById('totalpriceall').innerHTML = '&#2547; '+sum;
+var vat = Math.round(sum*.15)
+document.getElementById('vatall').innerHTML = '&#2547; '+ vat;
+var total_vat = Math.round(sum*.15)+sum;
+document.getElementById('vatntotalall').innerHTML = '&#2547; '+ total_vat;
 
 function val(price,product,quantity) {
     // let com = document.getElementById(product).value;
@@ -146,12 +179,16 @@ function val(price,product,quantity) {
   $('.totalprice').each(function(){
   sum += parseFloat(this.innerText);
                                   });
-  console.log(sum)
+  console.log(sum);
 
-  document.getElementById('totalpriceall').innerHTML = sum;
+  document.getElementById('totalpriceall').innerHTML = '&#2547; '+sum ;
+  document.getElementById('vatall').innerHTML = '&#2547; '+ Math.round(sum*.15);
+  var total_vat = Math.round(sum*.15)+sum;
+  document.getElementById('vatntotalall').innerHTML = '&#2547; '+ total_vat;
 }
-function frm(){
-  var quantity = []
+function frm(action){
+  document.getElementById("user_form").action = action
+  var quantity = [];
   $('.quantity').each(function(){
      quantity.push(parseInt(this.value));
                                        });
@@ -160,10 +197,13 @@ function frm(){
     // $('.totalprice').each(function(){
     // sum += parseFloat(this.innerText);
     //                                 });
-    var venugopal =document.getElementById('totalpriceall').innerHTML;
+    var totalpriceall =document.getElementById('totalpriceall').innerHTML;
+    var vatall =document.getElementById('vatall').innerHTML;
+    var vatntotalall =document.getElementById('vatntotalall').innerHTML;
 
-
-    document.getElementById('total_p').value = venugopal;
+    document.getElementById('total_p').value = totalpriceall.replace(/\D/g, "");
+    document.getElementById('vat').value = vatall.replace(/\D/g, "");
+    document.getElementById('vat_total').value = vatntotalall.replace(/\D/g, "");
 }
 
 
