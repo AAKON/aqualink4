@@ -21,6 +21,7 @@ SECRET_KEY = '#j5sbb*88t_(5%@nl2t8$g+!q#f7ihg)*-_78!6vdudf2)u2&_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -96,7 +97,7 @@ WSGI_APPLICATION = 'aqualink.wsgi.application'
 #     },
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'aqualink3',
+#         'NAME': 'aqualink',
 #         'USER':'root',
 #         'PASSWORD':'',
 #         'HOST':'localhost',
@@ -154,10 +155,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static') #this for live, comment out when testing into your local computer otherwise static urls will not work perfectly
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') 
+#this for live, comment out when testing into your local computer otherwise static urls will not work perfectly
 
 #uncomment it for local use & make DEBUG = True
-#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static') ]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static') ]
 
 
 #media file url & path
