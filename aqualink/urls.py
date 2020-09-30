@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from home import views
 from shop import urls
+from career import urls
 urlpatterns = [
     path('admin/', admin.site.urls,name='admin'),
 
@@ -27,6 +28,7 @@ urlpatterns = [
     path('product_details/<int:product_id>',views.product,name='product'),
     path('email',views.email,name='email'),
     path('shop/', include('shop.urls')),
+    path('career/',include('career.urls')),
 
 ]
 

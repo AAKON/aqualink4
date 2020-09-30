@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block page_content %}
+ <!-- background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%; -->
+  <!-- data-0-top-bottom="background-position: 50% 50px" data-start="background-position: 50% -31px" -->
+<section class="section text-center" style="align-content:center">
+
+<div class="" style="background-image:url('https://i.pinimg.com/originals/0c/96/b1/0c96b19dc89ffdaa7ff737cfc04a095f.png'); background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%;">
+<div class="background-overlay" style="background-color: rgba(92,118,141,0.8); ">
+
+  <div class="container">
+    <h1 style="padding-top:50px; font-weight: 900; color:#fff"><span style="color: darkorange;">Jobs</span> at Aqualink Bangladesh LTD.</h1>
+    <br>
+    <a href="#job_open"><button class="btn btn-info" style="margin-bottom:50px" name="button">View <span style="color: darkorange;font-size: 20px;">{{job_openings}}</span> openings</button></a>
+
+  </div>
+
+</div>
+
+</div>
+
+</section>
+<div style="text-align: center; width: 65%;" class="container" id="job_open"><p>Increase Efficiency with Smart Solution. We provide different sort of IT
+   solution products and service e.g. IOT, Machine Learning, Robotics,
+   Industrial Automation, Mobile App Development, Artificial Intelligence, Web Development and Embedded Systems.</p>
+   <hr>
+  </div>
+<section class="dataTable container text-center" style="align-content:center">
+<div>
+  <table id="dataTable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Designation</th>
+            <th>Location</th>
+            <th>Employment Status</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for career  in career_description %}
+        <tr>
+          <td style="background-color: azure;"><a href="{% url 'career:career_details' job_id=career.pk %}">{{career.designation}}</a> </td>
+          <td>{{career.job_location}}</td>
+          <td>{{career.employment_status}}</td>
+          
+      </tr>
+          
+        {% endfor %}
+          
+        
+        
+    </tbody>
+</table>
+
+</div>
+</section>
+
+
+
+{% endblock page_content %}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block page_content %}
+ 
+ {% for career in career_description  %}
+     
+ 
+     
+<section class="container">
+
+    <h1 style="color: darkorange; font-weight: bold;">{{career.designation}}</h1>
+    <p>{{career.job_location}}| {{career.employment_status}}</p>
+    <hr style="border: 1px solid #000000;">
+    <br>
+    <h3 style="font-weight: bold;">Job Description:</h3>
+    <hr>
+    <h5 style="font-weight: bold;"> Vacancy: <span style="font-weight: lighter;"> {{career.vacancy}} </span></h5>
+    <br>
+    <h5 style="font-weight: bold;">Job Responsiblities:</h5>
+    <p>
+        {{career.job_responsibility}}
+    </p>
+    <br>
+    <h5 style="font-weight: bold;"> Employment Status: <span style="font-weight: lighter;"> {{career.employment_status}}</span></h5>
+    <br>
+    <h5 style="font-weight: bold;"> Work Place: <span style="font-weight: lighter;"> {{career.work_place}}</span></h5>
+    <br>
+    <h5 style="font-weight: bold;">Educational Requirements:</h5>
+    <p>
+        {{career.education}}
+    </p>
+    <br>
+    <h5 style="font-weight: bold;">Experience Requirements:</h5>
+    <p>{{career.experience}}</p>
+    <br>
+    <h5 style="font-weight: bold;">Additional Requirements:</h5>
+    <p>
+        {{career.additional_requirment}}
+    </p>
+    <br>
+    <h5 style="font-weight: bold;">Job Location: <span style="font-weight: lighter;"> {{career.job_location}}</span></h5>
+    <br>
+    <h5 style="font-weight: bold;">Salary: <span style="font-weight: lighter;"> {{career.salary}}</span></h5>
+    <br>
+    <h5 style="font-weight: bold; color: crimson;">Deadline: <span style="font-weight: lighter; color: maroon;"> {{career.deadline}}</span></h5>
+
+
+
+
+</section>
+
+
+
+<div style="width: 100%; text-align: center;" class="container center">
+    <button style="font-size: 39px; font-weight: bolder; padding: 10px; padding-left: 15px; padding-right: 15px;" data-toggle="modal" data-target="#cv_submit_form"  class="btn btn-outline-success">Apply</button>
+</div>
+<br>
+
+<div class="modal fade" id="cv_submit_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Submit your pdf formated resume</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="{%url 'career:cv_email' %}" id="user_form" class="user_form" enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="modal-body mx-3">
+
+        <div class="md-form mb-5">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your pdf formated Resume</label>
+          <input name="pdf" type="file" accept="application/pdf" required class="form-control ">
+          
+        </div>
+        <div class="md-form mb-5">
+            <label data-error="wrong" data-success="right" for="defaultForm-email">You are applying for</label>
+            <input name="designation" required disabled type="text" class="form-control " value="{{career.designation}}">
+            
+        </div>
+        
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="submit" class="btn btn-success">Confirme</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+<script>$('.user_form' ).submit(function(){
+  $(".se-pre-con").fadeIn();
+});</script>
+
+{% endblock page_content %}
