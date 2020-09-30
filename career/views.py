@@ -21,9 +21,9 @@ def career_details(request,job_id):
 def cv_email(request):
     pdf = request.FILES['pdf']
     
-    designation = request.POST['designation']
+    designation = request.POST.get("designation")
     
-    subject, from_email, to = 'Career:'+designation, 'website@aqualinkbd.xyz', 'website@aqualinkbd.xyz'
+    subject, from_email, to = 'Career:'+ designation, 'website@aqualinkbd.xyz', 'website@aqualinkbd.xyz'
     text_content = 'Please check the attached file.'
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach('cv.pdf',pdf.read(),'application/pdf')

@@ -34,7 +34,7 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = 'website@aqualinkbd.xyz'
 EMAIL_HOST_PASSWORD = 'nSUbbsVsNm'
 
-#for local host email
+# for local host email
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_USE_TLS = True

@@ -52,8 +52,8 @@
 
 
 
-<div style="width: 100%; text-align: center;" class="container center">
-    <button style="font-size: 39px; font-weight: bolder; padding: 10px; padding-left: 15px; padding-right: 15px;" data-toggle="modal" data-target="#cv_submit_form"  class="btn btn-outline-success">Apply</button>
+<div style="width: 100%;" class="container">
+    <button style="font-size: 25px; font-weight: bolder; padding: 10px; padding-left: 15px; padding-right: 15px;" data-toggle="modal" data-target="#cv_submit_form"  class="btn btn-outline-info">Apply</button>
 </div>
 <br>
 
@@ -78,7 +78,7 @@
         </div>
         <div class="md-form mb-5">
             <label data-error="wrong" data-success="right" for="defaultForm-email">You are applying for</label>
-            <input name="designation" required disabled type="text" class="form-control " value="{{career.designation}}">
+            <input name="designation" required type="text"  class="form-control " value="{{career.designation|safe}}">
             
         </div>
         
