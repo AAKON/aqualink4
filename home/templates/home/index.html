@@ -185,7 +185,7 @@
           <div class="row">
             {% for client in clients %}
   
-            <div class="col-lg-2 col-md-4 text-center" data-aos="fade-up">
+            <div title="{{client.name}}" class="col-lg-2 col-md-4 text-center" data-aos="fade-up">
               <div style="background-color:rgb(185, 16, 16); border: none;" class="card">
                 <img src="{{ client.img_clients.url }}" alt="1" class="img-responsive" />
               </div>
