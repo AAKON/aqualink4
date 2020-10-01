@@ -172,61 +172,58 @@
 
 
 
-
-
-
-
-
-
-
-
-
-    <!-- ======= Our Team Section ======= -->
-    <!-- <section class="about-lists">
+    <section id="clint" class="clint counts">
       <div class="container">
-
         <div class="section-title">
           <h2>Our Clients</h2>
           <p>We work close with our clients projets to provide a unique experience</p>
         </div>
 
+        <div  class="row no-gutters">
 
-            <div class="row no-gutters about-lists container">
-              {% for client in clients %}
-              <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
-                <div><img src="{{ client.img_clients.url }}" class="img-fluid" alt=""></div>
+
+          <div class="row">
+            {% for client in clients %}
+  
+            <div class="col-lg-2 col-md-4 text-center" data-aos="fade-up">
+              <div style="background-color:rgb(185, 16, 16); border: none;" class="card">
+                <img src="{{ client.img_clients.url }}" alt="1" class="img-responsive" />
               </div>
-                {% endfor %}
-                {% for client in clients %}
-                <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
-                  <div><img src="{{ client.img_clients.url }}" class="img-fluid" alt=""></div>
-                </div>
-                  {% endfor %}
             </div>
-
-      </div>
-    </section> End Our Team Section -->
-
-    <section id="clint" class="clint">
-      <div class="container">
-        <div class="section-title">
-          <h2>Our Clients</h2>
-          <p>We work close with our clients projets to provide a unique experience</p>
-        </div>
-
-        <div class="row no-gutters">
-
-
-          {% for client in clients %}
-          <div  title="{{client.name}}" class="col-lg-2 col-md-2 col-sm-6 content-item " data-aos="fade-up">
-            <div style="width:80% !important; height:80% !important"><img style="border:none;" src="{{ client.img_clients.url }}" class="img-fluid card" alt=""></div>
-          </div>
+  
             {% endfor %}
+  
+          </div>
 
         </div>
+        <br><br>
 
       </div>
     </section><!-- End About Lists Section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
