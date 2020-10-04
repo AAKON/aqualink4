@@ -20,8 +20,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = '#j5sbb*88t_(5%@nl2t8$g+!q#f7ihg)*-_78!6vdudf2)u2&_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -97,32 +97,32 @@ WSGI_APPLICATION = 'aqualink.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aqualink',
-        'USER':'root',
-        'PASSWORD':'',
-        'HOST':'localhost',
-        'PORT':'3306',
-    }
-
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     },
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'aqualink',
-#         'USER': 'aqualink',
-#         'PASSWORD': '4QU41!nk',
-#         'HOST': 'localhost',
-#         'PORT': '',
+#         'USER':'root',
+#         'PASSWORD':'',
+#         'HOST':'localhost',
+#         'PORT':'3306',
 #     }
+
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'aqualink',
+        'USER': 'aqualink',
+        'PASSWORD': '4QU41!nk',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 
 # Password validation
@@ -162,11 +162,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static') 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') 
 #this for live, comment out when testing into your local computer otherwise static urls will not work perfectly
 
 #uncomment it for local use & make DEBUG = True
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static') ]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static') ]
 
 
 #media file url & path
