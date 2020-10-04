@@ -41,7 +41,7 @@
         
         {% for career  in career_description %}
         <tr>
-          <td style="background-color: azure;"><a href="{% url 'career:career_details' job_id=career.pk %}">{{career.designation}}</a> </td>
+          <td style="background-color: azure;"><a class="btn btn-info" href="{% url 'career:career_details' job_id=career.pk %}">{{career.designation}}</a> </td>
           <td>{{career.job_location}}</td>
           <td>{{career.employment_status}}</td>
           
