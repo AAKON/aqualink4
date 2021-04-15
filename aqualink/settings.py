@@ -110,7 +110,7 @@ WSGI_APPLICATION = 'aqualink.wsgi.application'
 #         'HOST':'localhost',
 #         'PORT':'3306',
 #     }
-
+#
 # }
 
 DATABASES = {
@@ -162,7 +162,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static') 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #this for live, comment out when testing into your local computer otherwise static urls will not work perfectly
 
 #uncomment it for local use & make DEBUG = True
